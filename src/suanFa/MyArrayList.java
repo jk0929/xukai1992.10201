@@ -1,6 +1,12 @@
 package suanFa;
 public class MyArrayList<AnyType> implements Iterable<AnyType>
 {
+    private static final int DEFAULT_CAPACITY = 10;
+
+    private AnyType [ ] theItems;
+
+    private int theSize;
+
     /**
      * Construct an empty ArrayList.
      */
@@ -75,7 +81,7 @@ public class MyArrayList<AnyType> implements Iterable<AnyType>
      */
     public boolean add( AnyType x )
     {
-    add( size( ), x );
+        add( size( ), x );
         return true;            
     }
     
@@ -107,8 +113,7 @@ public class MyArrayList<AnyType> implements Iterable<AnyType>
         
         for( int i = idx; i < size( ) - 1; i++ )
             theItems[ i ] = theItems[ i + 1 ];
-        theSize--;    
-        
+        theSize--;
         return removedItem;
     }
     
@@ -158,13 +163,14 @@ public class MyArrayList<AnyType> implements Iterable<AnyType>
     {
         private int current = 0;
         private boolean okToRemove = false;
-        
+
+        @Override
         public boolean hasNext( )
         {
             return current < size( );
         }
-        
-        
+
+        @Override
         public AnyType next( )
         {
             if( !hasNext( ) ) 
@@ -173,7 +179,8 @@ public class MyArrayList<AnyType> implements Iterable<AnyType>
             okToRemove = true;    
             return theItems[ current++ ];
         }
-        
+
+        @Override
         public void remove( )
         {
             if( !okToRemove )
@@ -184,10 +191,7 @@ public class MyArrayList<AnyType> implements Iterable<AnyType>
         }
     }
     
-    private static final int DEFAULT_CAPACITY = 10;
-    
-    private AnyType [ ] theItems;
-    private int theSize;
+
 }
 
 class TestArrayList
