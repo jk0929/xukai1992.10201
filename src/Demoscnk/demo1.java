@@ -7,8 +7,14 @@ package Demoscnk;
  */
 public class demo1 {
     public static void main(String[] args){
-        int[] array1 = new int[]{0,3,1,6,2,5,4};
-        int[] array2 = new int[]{1,0,3,6,4,2,5};
+        long nowTime = System.currentTimeMillis();
+        int[] array3 = new int[]{1,2,2,2,1,4,5,1,2,4,2};
+        for (int num : array3){
+            System.out.println(num);
+        }
+        System.out.println();
+        long time = System.currentTimeMillis();
+        System.out.println("耗费时间为:" + (time - nowTime)+ "毫秒");
     }
     public static int getTwo(int[] a,int[] b){
         if(a == null || a.length == 0){
